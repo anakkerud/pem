@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Pathfinder Encounter Manager Alpha</title>
+	<link rel='stylesheet' type='text/css' href='style.css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type='text/javascript' src='main.js'></script>
+</head>
+
+<body>
+	<div id="mainmenu">
+		<ul class="horizontal">
+			<li id="pagetitle">PEM&alpha;</li>
+			<li class="menuitem selected" id="menu-characters" onclick="selectView('characters')">Characters</li>
+			<li class="menuitem" id="menu-monsters" onclick="selectView('monsters')">Monsters</li>
+			<li class="menuitem" id="menu-encounters" onclick="selectView('encounters')">Encounters</li>
+			<li class="menuitem" id="menu-tools" onclick="selectView('tools')">Tools</li>
+		</ul>
+	</div>
+
+	<div class="page" id="characters">
+		<h2 class="card">Characters</h2>
+
+		<ul id="character-list" class="horizontal"></ul>
+		<div class="card">
+			<p>Edit / Export</p>
+			<textarea rows='6' cols='75' id='character-output'></textarea><br>
+			<button id='saveChangesButton'>Save changes</button>
+		</div>
+	</div>
+
+	<div class="page" id="monsters" style="display: none;">
+		<h2 class="card">Monsters</h2>
+		
+		<div></div>
+
+		<div class="card">
+			<table>
+				<tr><th>Name</th><th>HP</th><th>Init</th></tr>
+				<tr>
+					<td><input id="monster-name"></td>
+					<td><input id="monster-hp"></td>
+					<td><input id="monster-init"</td>
+				<tr>
+			</table>
+			<button id="addMonster">Add monster</button>
+		</div>
+		<ul id="monster-list" class="horizontal"></ul>
+		<div class="card">
+			<p>Edit / Export</p>
+			<textarea rows='6' cols='75' id='monster-output'></textarea><br>
+			<button id='saveMonstersButton'>Save changes</button>
+		</div>
+	</div>
+
+	<div class="page" id="encounters" style="display: none;">
+		<h2 class="card">Encounters</h2>
+		<ul id="encounter"></ul>
+		<div></div>
+		<div class="card">
+			<p>Edit / Export</p>
+			<textarea rows='6' cols='75' id='encounter-output'></textarea><br>
+			<button id='saveEncounterButton'>Save changes</button>
+		</div>
+		<div></div>
+		<div class="card"><button id="newEncounter">New encounter</button></div>
+	</div>
+
+	<div class="page" id="tools" style="display: none;">
+		<h2 class="card">Tools</h2>
+	</div>
+
+	<div><div>
+
+	<div id="warning">
+		<p><strong style="color: red;">Warning:</strong> This is an alpha version of Pathfinder Encounter Manager. As such, it is highly unstable. For consistent behavior, it is recommended you download the site and run it locally. <a style="color: blue; text-decoration: underline;" id="hideWarning">(hide)</a></p>
+	</div>
+</body>
