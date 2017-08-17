@@ -36,6 +36,11 @@ function selectView (view_id) {
 	$(".page#" + view_id).css("display","block");
 }
 
+function about() {
+	var win = window.open("README.md", "_blank");
+	if (win) { win.focus(); }
+}
+
 // VIEW
 
 function makeCharacterList () {
