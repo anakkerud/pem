@@ -69,6 +69,25 @@
 
 	<div class="page" id="tools" style="display: none;">
 		<h2 class="card">Tools</h2>
+
+		<div></div>
+
+		<div class="card" id="character-generator">
+			<h3>Character generator</h3>
+
+			<table id="character-table">
+				<tr><td>Name</td><td><input class="normal" id="name" onchange="updateCharacterJSON()"></td></tr>
+				<tr><td>Description</td><td><input class="normal" id="description" onchange="updateCharacterJSON()"></td></tr>
+				<tr><td>Max HP</td><td><input id="max-hp" onchange="updateCharacterJSON()"></td></tr>
+				<tr><td>Initiative</td><td><input class="normal" id="initiative" onchange="updateCharacterJSON()"></td></tr>
+				<tr><td>Comments</td><td><input class="normal" id="comments" onchange="updateCharacterJSON()"></td></tr>
+				<tr><td>Perception</td><td><input id="perception" onchange="updateCharacterJSON()"></td></tr>
+				<tr><td>Sense motive</td><td><input id="sense-motive" onchange="updateCharacterJSON()"></td></tr>
+				<tr><th>Other skills</th><td><button id="addSkillRow">Add Skill</button></td></tr>
+			</table>
+
+			<textarea rows='6' cols='75' readonly id="character-JSON"></textarea>
+		</div>
 	</div>
 
 	<div><div>

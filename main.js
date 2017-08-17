@@ -4,6 +4,8 @@ var characters = [];
 var monsters = [];
 var encounter = [];
 
+var skillRowID = 0;
+
 // WINDOW RELATED FUNCITONS
 
 window.onload = function () {
@@ -14,6 +16,7 @@ window.onload = function () {
 	$("#newEncounter").click( function () { newEncounter() });
 	$("#saveEncounterButton").click( function () { saveEncounter() });
 	$("#hideWarning").click( function () { $("#warning").css("display", "none") });
+	$("#addSkillRow").click( function() { addSkillRow() });
 	if (typeof(Storage) !== "undefined") {
 		$("#character-output").val(localStorage.getItem("characters"));
 		$("#monster-output").val(localStorage.getItem("monsters"));
@@ -105,7 +108,49 @@ function makeEncounterDisplay() {
 	}
 }
 
+function addSkillRow () {
+	var tr = "<tr class='skillRow' id='skillRow" + skillRowID + "'>"
+		+ "<td><input id='skill' onchange='updateCharacterJSON()'></td>"
+		+ "<td><input id='modifier' onchange='updateCharacterJSON()'></td>"
+		+ "<td><button onclick='deleteSkillRow(" + skillRowID + ")'>Delete skill</button></td></tr>";
+	$("#character-table").append(tr);
+	skillRowID++;
+}
+
+function deleteSkillRow (id) {
+	$("#skillRow" + id).remove();
+}
+
 // LOGIC
+
+function updateCharacterJSON () {
+	var character = {}
+
+	var inputs = $("#character-generator input.normal");
+	for ( i = 0; i < inputs.length; i++ ) {
+		var key = inputs[i].getAttribute("id");
+		var val = inputs[i].value;
+		character[key] = val;
+	}
+	character["hp"] = [$("#character-generator #max-hp").val(), $("#character-generator #max-hp").val()]
+
+	var otherSkillsInput = $("#character-table .skillRow");
+	var otherSkills = [
+		{ "name": "Perception", "modifier": $("#character-generator #perception").val() },
+		{ "name": "Sense motive", "modifier": $("#character-generator #sense-motive").val() }
+	];
+	for ( i = 0; i < otherSkillsInput.length; i++ ) {
+		var id = otherSkillsInput[i].getAttribute("id");
+		var newSkill = {
+			"name": $("#" + id + " #skill").val(),
+			"modifier": $("#" + id + " #modifier").val()
+		};
+		otherSkills.push(newSkill);
+	}
+	character["skills"] = otherSkills
+
+	$("#character-JSON").val(JSON.stringify([character]));
+}
 
 function addCharacters() {
 	characters = characters.concat(JSON.parse(document.getElementById("character-input").value));
