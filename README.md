@@ -19,3 +19,6 @@ This page is for managing encounters. When creating a new encounter, the system 
 
 ### Tools
 This page is for auxilliary tools. Currently, the only tool here is a character JSON creator tool. In future versions, we intend to include tools for converting exported data to new formats.
+
+### Creator
+Andreas Nakkerud
