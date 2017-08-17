@@ -37,7 +37,7 @@ function selectView (view_id) {
 }
 
 function about() {
-	var win = window.open("README.md", "_blank");
+	var win = window.open(window.location.href.replace(/[^/]*$/, '') + "README.md", "_blank");
 	if (win) { win.focus(); }
 }
 
